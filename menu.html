@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Callejón Del Taco - Menú</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png.png" alt="Logo El Callejón del Taco" class="logo-img" />
+      <h1>Callejón Del Taco</h1>
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <nav>
+      <ul id="main-nav-list" class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html" class="active">Menú</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="usuario.html">Usuario</a></li>
+        <li class="carrito-icono"><a href="#" id="abrir-carrito"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+      </ul>
+    </nav>
+
+   <!-- Carrito flotante FIX -->
+<div id="cart-dropdown" class="cart-dropdown oculto" style="position: absolute; right: 20px; top: 100px; background: white; border: 1px solid #ccc; padding: 10px; z-index: 999; box-shadow: 0 0 10px rgba(0,0,0,0.1); min-width: 250px;">
+  <ul id="cart-items" style="list-style: none; padding: 0; margin: 0;"></ul>
+  <div class="cart-total" style="margin-top: 10px; font-weight: bold;">
+    Total: $<span id="cart-total">0</span>
+  </div>
+<button type="button" onclick="checkout()">Ir a pagar</button>
+<!-- Opciones de método de pago (dentro del carrito flotante) -->
+<div id="opciones-tarjeta" class="oculto mt-3">
+  <h4 style="margin-bottom: 10px; color: #e44d26;">Selecciona método de pago:</h4>
+  <button id="btnCredito" class="bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded mb-2 w-full">
+    Tarjeta de Crédito
+  </button>
+  <button id="btnDebito" class="bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded w-full">
+    Tarjeta de Débito
+  </button>
+</div>
+
+
+  </header>
+
+  <!-- Main -->
+  <main>
+    <section id="menu" class="animate">
+      <h2>Nuestro Menú</h2>
+      <div class="taco-lista">
+        <div class="taco-item" data-nombre="Taco al Pastor" data-precio="20" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.49.09 AM.jpeg" alt="Taco al Pastor" />
+          <h3>Taco al Pastor</h3>
+          <p>Carne marinada con piña y especias.</p>
+          <button class="agregar-carrito" data-nombre="Taco al Pastor" data-precio="20">Agregar al carrito - $20 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco De Tripa" data-precio="25" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.45.47 AM.jpeg" alt="Taco De Tripa" />
+          <h3>Taco De Tripa</h3>
+          <p>Doradita Y suave</p>
+          <button class="agregar-carrito" data-nombre="Taco De Tripa" data-precio="25">Agregar al carrito - $25 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Burrito De Pastor" data-precio="18" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.51.29 AM.jpeg" alt="Burrito De Pastor" />
+          <h3>Burrito De Pastor</h3>
+          <p>Acompañado Con Queso Gratinado</p>
+          <button class="agregar-carrito" data-nombre="Burrito De Pastor" data-precio="18">Agregar al carrito - $18 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco de Chorizo" data-precio="22" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.53.13 AM.jpeg" alt="Taco de Chorizo" />
+          <h3>Taco de Chorizo</h3>
+          <p>Picante y sabroso chorizo artesanal.</p>
+          <button class="agregar-carrito" data-nombre="Taco de Chorizo" data-precio="22">Agregar al carrito - $22 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco De Longaniza" data-precio="20" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.41.10 AM.jpeg" alt="Taco De Longaniza" />
+          <h3>Taco De Longaniza</h3>
+          <p>Doradita Y Jugosa</p>
+          <button class="agregar-carrito" data-nombre="Taco De Longaniza" data-precio="20">Agregar al carrito - $20 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco De Barbacoa" data-precio="25" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.43.32 AM.jpeg" alt="Taco De Barbacoa" />
+          <h3>Taco De Barbacoa</h3>
+          <p>Cordero cocido lentamente con especias.</p>
+          <button class="agregar-carrito" data-nombre="Taco De Barbacoa" data-precio="25">Agregar al carrito - $25 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco De Milanesa" data-precio="18" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.32.11 AM.jpeg" alt="Taco De Milanesa" />
+          <h3>Taco De Milanesa</h3>
+          <p>Acompañado con puré de papa.</p>
+          <button class="agregar-carrito" data-nombre="Taco De Milanesa" data-precio="18">Agregar al carrito - $18 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco De Arrachera" data-precio="22" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.27.18 AM.jpeg" alt="Taco De Arrachera" />
+          <h3>Taco De Arrachera</h3>
+          <p>Delicioso y jugoso</p>
+          <button class="agregar-carrito" data-nombre="Taco De Arrachera" data-precio="22">Agregar al carrito - $22 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco De Carne Enchilada" data-precio="22" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.27.19 AM.jpeg" alt="Taco De Carne Enchilada" />
+          <h3>Taco De Carne Enchilada</h3>
+          <p>Picante y sabrosa Carne Artesanal.</p>
+          <button class="agregar-carrito" data-nombre="Taco De Carne Enchilada" data-precio="22">Agregar al carrito - $22 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Taco Campechano" data-precio="22" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.55.42 AM.jpeg" alt="Taco Campechano" />
+          <h3>Taco Campechano</h3>
+          <p>Rica Combinación De Sabores.</p>
+          <button class="agregar-carrito" data-nombre="Taco Campechano" data-precio="22">Agregar al carrito - $22 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Agua De Jamaica" data-precio="22" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.18.03 AM.jpeg" alt="Agua De Jamaica" />
+          <h3>Agua De Jamaica</h3>
+          <p>Rica y Refrescante.</p>
+          <button class="agregar-carrito" data-nombre="Agua De Jamaica" data-precio="22">Agregar al carrito - $22 MXN</button>
+        </div>
+        <div class="taco-item" data-nombre="Agua De Horchata" data-precio="22" tabindex="0" role="button">
+          <img src="images/WhatsApp Image 2025-06-18 at 9.19.07 AM.jpeg" alt="Agua De Horchata" />
+          <h3>Agua De Horchata</h3>
+          <p>Dulce Y Cremosa</p>
+          <button class="agregar-carrito" data-nombre="Agua De Horchata" data-precio="22">Agregar al carrito - $22 MXN</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 Callejón del Taco. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+
+
+<!-- Formulario de Tarjeta -->
+<div id="formulario-tarjeta" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 hidden z-50 flex items-center justify-center">
+  <div class="bg-white p-6 rounded-xl shadow-lg max-w-sm w-full">
+    <h2 id="titulo-tarjeta" class="text-xl font-bold mb-4">Pago con Tarjeta</h2>
+    <form onsubmit="procesarPagoFinal(event)">
+      <input type="text" placeholder="Nombre en la tarjeta" required class="w-full mb-2 p-2 border rounded" />
+      <input type="text" placeholder="Número de tarjeta" required maxlength="16" class="w-full mb-2 p-2 border rounded" />
+      <input type="text" placeholder="MM/AA" required maxlength="5" class="w-full mb-2 p-2 border rounded" />
+      <input type="text" placeholder="CVV" required maxlength="3" class="w-full mb-4 p-2 border rounded" />
+      <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">Confirmar Pago</button>
+    </form>
+  </div>
+</div>
+
+
+</body>
+
+</html>

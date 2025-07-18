@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Callejón Del Taco - Galería</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png.png" alt="Logo El Callejón del Taco" class="logo-img" />
+      <h1>Callejón Del Taco</h1>
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <nav>
+      <ul id="main-nav-list" class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html">Menú</a></li>
+        <li><a href="galeria.html" class="active">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="usuario.html">Usuario</a></li>
+        <li class="carrito-icono"><a href="#" id="abrir-carrito"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+      </ul>
+    </nav>
+     <!-- Carrito flotante FIX -->
+<div id="cart-dropdown" class="cart-dropdown oculto" style="position: absolute; right: 20px; top: 100px; background: white; border: 1px solid #ccc; padding: 10px; z-index: 999; box-shadow: 0 0 10px rgba(0,0,0,0.1); min-width: 250px;">
+  <ul id="cart-items" style="list-style: none; padding: 0; margin: 0;"></ul>
+  <div class="cart-total" style="margin-top: 10px; font-weight: bold;">
+    Total: $<span id="cart-total">0</span>
+  </div>
+<button type="button" onclick="checkout()">Ir a pagar</button>
+<!-- Opciones de método de pago (dentro del carrito flotante) -->
+<div id="opciones-tarjeta" class="oculto mt-3">
+  <h4 style="margin-bottom: 10px; color: #e44d26;">Selecciona método de pago:</h4>
+  <button id="btnCredito" class="bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded mb-2 w-full">
+    Tarjeta de Crédito
+  </button>
+  <button id="btnDebito" class="bg-orange-500 hover:bg-orange-600 text-white py-2 px-4 rounded w-full">
+    Tarjeta de Débito
+  </button>
+</div>
+  </header>
+
+ 
+  
+
+<main>
+  <section id="galeria" class="animate">
+    <h2>Nuestra Galería</h2>
+    <div class="galeria">
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.56.24_e79ef330.jpg" class="galeria-img" alt="Taco De Longaniza" data-name="Taco De Longaniza" data-price="25" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.56.24_e5fe0386.jpg" class="galeria-img" alt="Taco De Tripa" data-name="Taco De Tripa" data-price="28" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.56.24_554fd5b7.jpg" class="galeria-img" alt="Taco De Alpastor" data-name="Taco De Alpastor" data-price="30" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.56.23_4b22bd2c.jpg" class="galeria-img" alt="Taco De Carne Enchilada" data-name="Taco De Carne Enchilada" data-price="27" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.56.24_f3ddacb6.jpg" class="galeria-img" alt="Taco De Arrachera" data-name="Taco De Arrachera" data-price="25" />
+      <img src="images/Imagen de WhatsApp 2025-06-11 a las 09.34.34_ab0e7145.jpg" class="galeria-img" alt="Taco Campechano" data-name="Taco Campechano" data-price="28" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.56.24_607c3f6d.jpg" class="galeria-img" alt="Taco de milanesa" data-name="Taco de milanesa" data-price="30" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.56.23_4b22bd2c.jpg" class="galeria-img" alt="Taco de chorizo" data-name="Taco de chorizo" data-price="27" />
+      <img src="images/Imagen de WhatsApp 2025-06-11 a las 09.34.27_5149fbcc.jpg" class="galeria-img" alt="Taco al pastor" data-name="Taco al pastor" data-price="25" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.40.04_d2d8f725.jpg" class="galeria-img" alt="Burrito De Pastor" data-name="Burrito De Pastor" data-price="28" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.40.04_657206d7.jpg" class="galeria-img" alt="Agua De Jamaica" data-name="Agua De Jamaica" data-price="30" />
+      <img src="images/Imagen de WhatsApp 2025-07-08 a las 07.40.04_e57bd2b2.jpg" class="galeria-img" alt="Agua De Horchata" data-name="Agua De Horchata" data-price="27" />
+    </div>
+  </section>
+</main>
+
+
+
+  <!-- Pie de página -->
+  <footer>
+    <p>&copy; 2025 Callejón del Taco. Todos los derechos reservados.</p>
+  </footer>
+<div class="cart-dropdown" id="cart-dropdown" style="display:none; position: fixed; right: 20px; top: 80px; background: white; border: 1px solid #ccc; padding: 15px; width: 250px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 1000;">
+  <ul id="cart-items" style="list-style:none; padding:0; max-height: 200px; overflow-y: auto;"></ul>
+  <div class="cart-total" style="margin-top: 10px; font-weight: bold;">Total: $<span id="cart-total">0</span></div>
+  <button onclick="checkout()" style="margin-top: 10px; width: 100%; padding: 8px; background-color: #007bff; color: white; border: none; cursor: pointer;">Ir a pagar</button>
+</div>
+  <script src="script.js"></script>
+</body>
+
+</html>

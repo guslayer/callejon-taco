@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Callejón Del Taco - Carrito de Compras</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="images/logo.png.png" alt="Logo El Callejón del Taco" class="logo-img" />
+      <h1>Callejón Del Taco</h1>
+    </div>
+    <nav>
+      <ul id="main-nav-list" class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html">Menú</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="usuario.html">Usuario</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="perfil-usuario">
+      <h2>Tu Carrito de Compras</h2>
+      <ul id="lista-carrito">
+        <!-- Aquí se listarán los productos agregados dinámicamente -->
+      </ul>
+      <p id="total-carrito">Total: $0.00</p>
+
+      <div class="botones-usuario">
+        <button id="vaciar-carrito">Vaciar Carrito</button>
+        <button id="procesar-pago">Proceder al Pago</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Callejón del Taco. Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+

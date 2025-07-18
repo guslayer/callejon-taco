@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Callejón Del Taco - Usuario</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png.png" alt="Logo El Callejón del Taco" class="logo-img" />
+      <h1>Callejón Del Taco</h1>
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <nav>
+      <ul id="main-nav-list" class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html">Menú</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+        <li><a href="usuario.html" class="active">Usuario</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="perfil-usuario">
+      <h2>Perfil de Usuario</h2>
+      <div id="info-usuario">
+        <p><strong>Nombre:</strong> <span id="nombre-usuario"></span></p>
+        <p><strong>Correo electrónico:</strong> <span id="email-usuario"></span></p>
+        <p><strong>Edad:</strong> <span id="edad-usuario"></span></p>
+        <p><strong>Dirección:</strong> <span id="direccion-usuario"></span></p>
+        <p><strong>Teléfono:</strong> <span id="telefono-usuario"></span></p>
+      </div>
+      <br />
+      <button id="btn-editar">Iniciar sesión</button>
+      <button id="cerrar-sesion" style="display: none;">Cerrar sesión</button>
+    </section>
+  </main>
+
+  <!-- Modal para editar perfil -->
+  <div id="modal-editar" class="modal-registro" style="display: none;">
+    <div class="modal-registro-content">
+      <span class="cerrar-registro" id="cerrar-editar">&times;</span>
+      <h2>Editar Perfil</h2>
+      <form id="form-editar">
+        <label for="edit-nombre">Nombre completo</label>
+        <input type="text" id="edit-nombre" required />
+
+        <label for="edit-email">Correo electrónico</label>
+        <input type="email" id="edit-email" required />
+
+        <label for="edit-edad">Edad</label>
+        <input type="number" id="edit-edad" min="18" max="85" required />
+
+        <label for="edit-direccion">Dirección</label>
+        <input type="text" id="edit-direccion" required />
+
+        <label for="referencias">Referencias</label>
+        <textarea id="referencias" rows="3" placeholder="Entre calles;" required></textarea>
+
+        <label for="edit-telefono">Número de teléfono</label>
+        <input type="tel" id="edit-telefono" pattern="[0-9]{10}" maxlength="10" required />
+
+        <button type="submit">Guardar Cambios</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Registro -->
+  <div id="modal-registro" class="modal-registro" style="display: none;">
+    <div class="modal-registro-content">
+      <button id="cerrar-registro" class="cerrar-registro" aria-label="Cerrar">❌</button>
+      <h2>Crear Cuenta</h2>
+      <form id="form-registro">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" required>
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" required>
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" required>
+
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" min="18" max="85" required>
+
+        <label for="direccion">Dirección</label>
+        <input type="text" id="direccion" required>
+
+        <label for="referencias">Referencias</label>
+        <textarea id="referencias" rows="3" placeholder="Entre calles;" required></textarea>
+
+        <label for="telefono">Número de teléfono</label>
+        <input type="tel" id="telefono" pattern="[0-9]{10}" maxlength="10" required>
+
+        <button type="submit">Registrarme</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const datos = JSON.parse(localStorage.getItem("usuario"));
+      const btnEditar = document.getElementById("btn-editar");
+      const modalEditar = document.getElementById("modal-editar");
+      const modalRegistro = document.getElementById("modal-registro");
+      const cerrarRegistro = document.getElementById("cerrar-registro");
+      const cerrarEditar = document.getElementById("cerrar-editar");
+
+      if (datos) {
+        document.getElementById("nombre-usuario").textContent = datos.nombre;
+        document.getElementById("email-usuario").textContent = datos.correo;
+        document.getElementById("edad-usuario").textContent = datos.edad;
+        document.getElementById("direccion-usuario").textContent = datos.direccion;
+        document.getElementById("telefono-usuario").textContent = datos.telefono;
+
+        btnEditar.textContent = "Editar perfil";
+        document.getElementById("cerrar-sesion").style.display = "inline-block";
+      } else {
+        btnEditar.textContent = "Iniciar sesión";
+        document.getElementById("cerrar-sesion").style.display = "none";
+      }
+
+      btnEditar.addEventListener("click", () => {
+        const datosActualizados = JSON.parse(localStorage.getItem("usuario"));
+        if (datosActualizados) {
+          document.getElementById("edit-nombre").value = datosActualizados.nombre;
+          document.getElementById("edit-email").value = datosActualizados.correo;
+          document.getElementById("edit-edad").value = datosActualizados.edad;
+          document.getElementById("edit-direccion").value = datosActualizados.direccion;
+          document.getElementById("edit-telefono").value = datosActualizados.telefono;
+          modalEditar.style.display = "block";
+        } else {
+          modalRegistro.style.display = "block";
+        }
+      });
+
+      cerrarRegistro.addEventListener("click", () => {
+        modalRegistro.style.display = "none";
+      });
+
+      cerrarEditar.addEventListener("click", () => {
+        modalEditar.style.display = "none";
+      });
+
+      document.getElementById("cerrar-sesion").addEventListener("click", () => {
+        localStorage.removeItem("usuario");
+        alert("Sesión cerrada.");
+        window.location.href = "index.html";  // Redirigir al inicio
+      });
+
+      document.getElementById("form-editar").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const nuevoUsuario = {
+          nombre: document.getElementById("edit-nombre").value,
+          correo: document.getElementById("edit-email").value,
+          edad: parseInt(document.getElementById("edit-edad").value),
+          direccion: document.getElementById("edit-direccion").value,
+          telefono: document.getElementById("edit-telefono").value,
+        };
+
+        localStorage.setItem("usuario", JSON.stringify(nuevoUsuario));
+        alert("Perfil actualizado.");
+        location.reload();
+      });
+
+      document.getElementById("form-registro").addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const usuario = {
+          nombre: document.getElementById("nombre").value,
+          correo: document.getElementById("email").value,
+          edad: parseInt(document.getElementById("edad").value),
+          direccion: document.getElementById("direccion").value,
+          telefono: document.getElementById("telefono").value,
+        };
+
+        fetch('registro_usuario.php', {
+          method: 'POST',
+          body: JSON.stringify(usuario),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+        .then(response => response.json())
+        .then(data => {
+          alert("Cuenta registrada con éxito.");
+          modalRegistro.style.display = "none";
+          location.reload();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

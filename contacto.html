@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Callejón Del Taco - Contacto</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Estilo para la notificación */
+    #notificacion {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease, bottom 0.5s ease;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Encabezado -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png.png" alt="Logo El Callejón del Taco" class="logo-img" />
+      <h1>Callejón Del Taco</h1>
+      <button id="menu-toggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+    <nav>
+      <ul id="main-nav-list" class="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="menu.html">Menú</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html" class="active">Contacto</a></li>
+        <li><a href="usuario.html">Usuario</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contacto-section" style="text-align: center;">
+      <h2>Contacto</h2>
+      <section>
+      <p>¿Tienes alguna pregunta o quieres hacer un pedido especial? ¡Estamos para ayudarte!</p>
+      <form id="form-contacto">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre completo" />
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" required placeholder="ejemplo@correo.com" />
+
+        <label for="telefono">Número de teléfono</label>
+        <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" maxlength="10" placeholder="10 dígitos" />
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Escribe tu mensaje aquí..."></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Callejón del Taco. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Notificación de agradecimiento -->
+  <div id="notificacion">¡Gracias por tus comentarios, nos comunicaremos pronto!</div>
+
+  <script>
+    // Agregar el evento submit al formulario
+    document.getElementById("form-contacto").addEventListener("submit", function (e) {
+      e.preventDefault(); // Prevenir que se recargue la página
+
+      // Mostrar la notificación de gracias
+      const notificacion = document.getElementById("notificacion");
+      notificacion.style.display = "block";
+      notificacion.style.opacity = 1;
+      notificacion.style.bottom = "30px"; // Muestra la notificación arriba
+
+      // Después de 3 segundos, ocultar la notificación
+      setTimeout(() => {
+        notificacion.style.opacity = 0;
+        notificacion.style.bottom = "20px"; // Volver a su posición original
+      }, 3000);
+
+      // Limpiar el formulario
+      document.getElementById("form-contacto").reset();
+    });
+  </script>
+</body>
+
+</html>
+
